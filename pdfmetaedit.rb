@@ -123,8 +123,10 @@ def write_file (title, author, creator, producer, currentfile, outputfile = curr
 	f.puts "InfoValue: #{producer}"
 	f.close
 	willend = false
-	# TODO strip this command and call pdftk cat when needed
-	system("pdftk '#{currentfile}' update_info '#{f.path}' output '#{f.path}.pdf' && mv '#{f.path}.pdf' '#{outputfile}'")
+	updateinfo	= "pdftk '#{currentfile}' update_info '#{f.path}' output '#{f.path}.pdf'"
+	createidir	= "pdftk '#{currentfile}' cat output '#{f.path}.pdf'"
+	mv			= "mv '#{f.path}.pdf' '#{outputfile}'"
+	system(updateinfo+" || ("+createidir+" && "+mv+" && "+updateinfo+") && "+mv)
 	if $?.exitstatus == 0
 		dialog = Gtk::MessageDialog.new(@window, 
 										Gtk::Dialog::MODAL,
