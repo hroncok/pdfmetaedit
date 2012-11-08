@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 #
-# Copyright (c) 2011, Miro Hrončok <miro@hroncok.cz>
+# Copyright (c) 2011, 2012, Miro Hrončok <miro@hroncok.cz>
 #
 # Permission to use, copy, modify, and/or distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
